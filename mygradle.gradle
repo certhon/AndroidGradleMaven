@@ -1,0 +1,23 @@
+task(hello){
+}
+//task haha (dependsOn: "hello")<<{
+//    String s = "lalal"
+//    print(s)
+//}
+
+task a {
+    print("项目名字是"+project.name)
+
+}
+
+task testBoth {
+    // 依赖 a task 先执行
+    dependsOn("a")
+    println '我会在 Configuration 和 Execution 阶段都会执行'
+    doFirst {
+        println '我仅会在 testBoth 的 Execution 阶段执行'
+    }
+    doLast {
+        println '我仅会在 testBoth 的 Execution 阶段执行'
+    }
+}
